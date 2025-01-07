@@ -1,0 +1,30 @@
+# TODO 1: filter the data for movies released in the 1990s
+# create a subset for DataFrame to keep only the movies
+netflix_subset = netflix_df[netflix_df["type"] == "Movie"]
+
+# filter the years
+years_subset = netflix_subset[netflix_subset["release_year"] >= 1990]
+movies_subset = years_subset[years_subset["release_year"] < 2000]
+
+# TODO 2: Find the most frequent movie duration
+# visualize the data to view the distribution of durations for movies released in the 1990s
+
+plt.hist (movies_subset ["duration"])
+plt.title ("Duration of Movie Durations")
+plt.xlabel ("Durations")
+plt.ylabel ("Number of Movies")
+plt.show()
+
+duration = 100
+
+action_genre = movies_subset [movies_subset["genre"] == "Action"]
+
+short_movie_count = 0
+
+for label, row in action_genre.iterrows() :
+    if row["duration"] < 90:
+        short_movie_count += 1
+    else:
+        pass
+
+print (short_movie_count)
